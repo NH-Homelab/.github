@@ -1,5 +1,7 @@
 # NH-Homelab
-A collection of repositories for various self-hosted services. The purpose of the homelab is to have have an accessible and flexible development environment, host my projects at a lower cost than a hosting provider, and have fine-grained access control to my projects for other users.
+A collection of repositories for various self-hosted services. The purpose of the homelab is to have have an accessible and flexible development environment, host my projects at a lower cost than a hosting provider, and have fine-grained access control to my projects for other users. 
+
+This project is ongoing, and much of the code I've written for it hasn't been published yet. I plan to organize the code and upload it to repositories in this organization. 
 
 ## Physical Server
 I repurposed a desktop PC for this homelab. After migrating to proxmox, I decided to upgrade the memory with an additional 16 GB for the additional containers. The GPUs were added for future machine learning projects. 
