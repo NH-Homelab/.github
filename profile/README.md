@@ -23,8 +23,7 @@ Initially, the server was running an Ubuntu server distribution. Eventually, I w
 ## Proxmox
 Configuring proxmox has been a new challenge. Virtual networking was a huge struggle at first, since I was used to using UFW to manage open ports. While creating firewall rules was simple in the webUI, now I had to create rules to forward packets to the correct containers as well. Here is the work in progress plan for the network structure of the containers. I wanted to avoid a flat network, but I also don't want to overcomplicate it. I decided to separate containers that needed access to the NAS and those that didn't. The services on vmbr0 all have statically assigned IP's, while most of the other containers / machines on vmbr1 are dynamically assigned by the Pihole DHCP. 
 
-![Network Diagram of the Services running on Proxmox](/profile/assets/NetworkDiagram.jpeg)
-
+![Network Diagram of the Services running on Proxmox](/../../profile/assets/NetworkDiagram.jpeg)
 
 
 ### Services
