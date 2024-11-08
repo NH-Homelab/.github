@@ -21,7 +21,10 @@ Initially, the server was running an Ubuntu server distribution. Eventually, I w
 
 
 ## Proxmox
-Configuring proxmox has been a new challenge. Virtual networking was a huge struggle at first, since I was used to using UFW to manage open ports. While creating firewall rules was simple in the webUI, now I had to create rules to forward packets to the correct containers as well. Here is the work in progress plan for the network structure of the containers. I wanted to avoid a flat network, but I also don't want to overcomplicate it. I decided to separate containers that needed access to the NAS and those that didn't. The services on vmbr0 all have statically assigned IP's, while most of the other containers / machines on vmbr1 are dynamically assigned by the Pihole DHCP. 
+Configuring proxmox has been a new challenge. Virtual networking was a huge struggle at first, since I was used to using UFW to manage open ports. While creating firewall rules was simple in the webUI, now I had to create rules in `/etc/network/interfaces` to forward packets to the correct containers as well. Below is the work in progress plan for the network structure of the containers. I didn't want a flat network, but am also trying to avoid over-complicating the network. At the top, vmbr0 holds nginx and the Pihole DHCP server. Nginx needs to be able to route traffic to various containers on all of the bridges, and Pihole needs to act as the DHCP server for vmbr2 and provide DNS to all hosts. With this setup, I can start using the .local top-level domain.
+
+Next, I separated the hosts that would need access to the samba NAS in vmbr1. This way, the other hosts don't have unecessary access to the NAS. Vmbr2 holds the rest of the hosts. Many of these hosts were created after I started using DHCP, which means these hosts have dynamically assigned IPs. This is the bridge that any new containers will be created on. 
+
 
 ![Network Diagram of the Services running on Proxmox](/profile/assets/NetworkDiagram.jpeg)
 
